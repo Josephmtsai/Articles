@@ -1,0 +1,12 @@
+{
+  "editor.fontSize": 22,
+  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "prettier.printWidth": 150,
+  "prettier.singleQuote": true,
+  "python.pythonPath": "C:\\virtualEnv\\virtual37\\Scripts",
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.formatting.provider": "autopep8",
+  "python.autoComplete.addBrackets": true
+}
