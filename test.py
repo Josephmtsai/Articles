@@ -1,7 +1,5 @@
-import os, sys
-name = "asdasdasdas"
-  
 array = ['asdsd', 'asdsdsd']
-print("asd")
-aa():
-    print("asds")
+
+
+def test():
+    assert 200 == 200
