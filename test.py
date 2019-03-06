@@ -6,3 +6,5 @@ def test():
 
 
 a = "asdssds"
+bb = "asdsdsdsd"
+test()
