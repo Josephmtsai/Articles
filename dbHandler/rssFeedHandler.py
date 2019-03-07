@@ -4,7 +4,9 @@ import os
 MONGO_URL = os.environ.get('MONGODB_URI')
 
 
-def insertStatus(status):
+def insertRssFeeds(dataList):
     client = pymongo.MongoClient(MONGO_URL)
-    db = client.heroku_szv1xx0f
-    db.status.insert_one(status)
+    print('sa')
+    db = client.news
+    db.articles.insert_many(dataList)
+    print('sa')
