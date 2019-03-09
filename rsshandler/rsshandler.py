@@ -1,8 +1,15 @@
 import feedparser
 from dbHandler import rssFeedHandler
+from time import mktime
+from datetime import datetime
 
 
-def parser(url):
+def dump(obj):
+    for attr in dir(obj):
+        print("obj.%s = %r\n" % (attr, getattr(obj, attr)))
+
+
+def parser(url, MONGO_URL):
     rssFeedList = feedparser.parse(url)
     mongoRssDataList = []
 
@@ -10,9 +17,13 @@ def parser(url):
         mongoRssData = {}
         mongoRssData['title'] = rssFeed['title']
         mongoRssData['description'] = rssFeed['description']
-        mongoRssData['links'] = rssFeed['links'][0].href
+        mongoRssData['link'] = rssFeed['link']
+        mongoRssData['storyimage'] = rssFeed['storyimage']
+        mongoRssData['fullimage'] = rssFeed['fullimage']
+        mongoRssData['tags'] = rssFeed['tags']
+        mongoRssData['updateDate'] = datetime.fromtimestamp(
+            mktime(rssFeed['updated_parsed']))
+        mongoRssData['publishedDate'] = datetime.fromtimestamp(
+            mktime(rssFeed['published_parsed']))
         mongoRssDataList.append(mongoRssData)
-    rssFeedHandler.insertRssFeeds(mongoRssDataList)
-
-
-parser("https://feeds.feedburner.com/ndtvnews-top-stories")
+    rssFeedHandler.insertRssFeeds(mongoRssDataList, MONGO_URL)

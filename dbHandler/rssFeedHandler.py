@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 import pymongo
-import os
-MONGO_URL = os.environ.get('MONGODB_URI')
 
 
-def insertRssFeeds(dataList):
+def insertRssFeeds(dataList, MONGO_URL):
+    print(MONGO_URL)
     client = pymongo.MongoClient(MONGO_URL)
-    print('sa')
-    db = client.news
+    print('start connect')
+    db = client.articles
     db.articles.insert_many(dataList)
-    print('sa')
+    print('insert data')
