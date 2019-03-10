@@ -26,4 +26,7 @@ def parser(MONGO_URL):
                 mongoRssData['source'] = rssFeedInformation['name']
                 mongoRssData['section'] = rssFeedList['title']
                 mongoRssDataList.append(mongoRssData)
-    rssFeedHandler.insertRssFeeds(mongoRssDataList, MONGO_URL)
+    if len(rssFeedHandler) > 0:
+        rssFeedHandler.insertRssFeeds(mongoRssDataList, MONGO_URL)
+        return "OK"
+    return "Nothing Insert"
